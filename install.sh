@@ -44,10 +44,11 @@ if [[ ! -d $bundle ]]
 then
   mkdir -p $bundle_dir
   git clone https://github.com/gmarik/vundle.git $bundle_dir/vundle
-done
+fi
 
 ## Copy vimrc
 link vimrc
+link gvimrc
 
 # Config Tmux
 sudo apt-get install tmux
