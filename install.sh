@@ -40,7 +40,7 @@ sudo apt-get install vim-gnome
 ## Install vundle
 bundle_dir=~/.vim/bundle
 
-if [[ ! -d $bundle ]]
+if [[ ! -d $bundle_dir ]]
 then
   mkdir -p $bundle_dir
   git clone https://github.com/gmarik/vundle.git $bundle_dir/vundle
