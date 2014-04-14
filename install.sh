@@ -53,3 +53,8 @@ link gvimrc
 # Config Tmux
 sudo apt-get install tmux
 link tmux.conf
+
+# Fix Chinese fonts
+sudo cp /etc/fonts/conf.avail/69-language-selector-zh-cn.conf /etc/fonts/conf.avail/69-language-selector-zh-cn.conf.$(date +'%FT%T%z').backup
+sudo cp $ROOT_DIR/69-language-selector-zh-cn.conf /etc/fonts/conf.avail/69-language-selector-zh-cn.conf
+echo 'Please reboot your system.'
