@@ -1,4 +1,3 @@
-# echo "begin .bashrc"
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -107,15 +106,15 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-add_path() {
-  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-    if [[ "$2" == "-t" ]]; then
-      export PATH="$PATH:$1"
-    else
-      export PATH="$1:$PATH"
-    fi
-  fi
-}
+#add_path() {
+#  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+#    if [[ "$2" == "-t" ]]; then
+#      export PATH="$PATH:$1"
+#    else
+#      export PATH="$1:$PATH"
+#    fi
+#  fi
+#}
 
 # git branch show configuration
 PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
@@ -127,14 +126,14 @@ alias rpry='rails-console-pry -r pry-doc -r awesome_print'
 #PATH=$PATH:/usr/local/go/bin
 
 ### Added by the Heroku Toolbelt
-# export PATH="/usr/local/heroku/bin:$PATH"
-add_path "/usr/local/heroku/bin"
+export PATH="/usr/local/heroku/bin:$PATH"
+# add_path "/usr/local/heroku/bin"
 
 # Config for rvm
-export rvmsudo_secure_path=1
+# export rvmsudo_secure_path=1
 
 # Config for JDK font
-# export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
 
 alias canigo='tail -n 200 /var/log/auth.log | grep session | grep 09:'
 alias bi='bundle install --path vendor/bundle --binstubs=vendor/bundle/binstubs'
@@ -145,12 +144,15 @@ alias iblog='cd /home/reyesyang/program/projects/my/reyesyang.github.io && jekyl
 alias sinatra-console='pry -e "require \"./app\""'
 
 export ANDROID_PLATFORM_TOOLS_PATH="/home/reyesyang/program/tools/android-studio/sdk/platform-tools"
-add_path $ANDROID_PLATFORM_TOOLS_PATH
+# add_path $ANDROID_PLATFORM_TOOLS_PATH
 export ANDROID_TOOLS_PATH="/home/reyesyang/program/tools/android-studio/sdk/tools"
-# export PATH="$ANDROID_PLATFORM_TOOLS_PATH:$ANDROID_TOOLS_PATH:$PATH"
-add_path $ANDROID_TOOLS_PATH
+export PATH="$ANDROID_PLATFORM_TOOLS_PATH:$ANDROID_TOOLS_PATH:$PATH"
+# add_path $ANDROID_TOOLS_PATH
 
 export TERM=xterm-256color  # for common 256 color terminals
-# echo "end .bashrc"
 
 export GOPATH="$HOME/program/projects/go"
+
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
