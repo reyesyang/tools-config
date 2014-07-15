@@ -133,7 +133,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # export rvmsudo_secure_path=1
 
 # Config for JDK font
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd"
 
 alias canigo='tail -n 200 /var/log/auth.log | grep session | grep 09:'
 alias bi='bundle install --path vendor/bundle --binstubs=vendor/bundle/binstubs'
@@ -142,6 +142,7 @@ alias bi='bundle install --path vendor/bundle --binstubs=vendor/bundle/binstubs'
 alias ihosts='sudo vi /etc/hosts'
 alias iblog='cd /home/reyesyang/program/projects/my/reyesyang.github.io && jekyll server --watch --draft'
 alias sinatra-console='pry -e "require \"./app\""'
+alias nogfw='ssh -v -D 127.0.0.1:1080 digital-ocean-1'
 
 export ANDROID_PLATFORM_TOOLS_PATH="/home/reyesyang/program/tools/android-studio/sdk/platform-tools"
 # add_path $ANDROID_PLATFORM_TOOLS_PATH
@@ -156,3 +157,7 @@ export GOPATH="$HOME/program/projects/go"
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+export EDITOR=vim
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh

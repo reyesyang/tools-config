@@ -3,34 +3,48 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 
-" Bundle 'msanders/snipmate.vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
+" Plugin 'msanders/snipmate.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+" Plugin 'garbas/vim-snipmate'
+" Plugin 'honza/vim-snippets'
 
-Bundle 'scrooloose/nerdtree'
-Bundle 'ervandew/supertab'
-Bundle 'godlygeek/tabular'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Yggdroot/indentLine'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'tomtom/tcomment_vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'godlygeek/tabular'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'taglist.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'mattn/emmet-vim'
 
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle "othree/html5.vim"
-Bundle "pangloss/vim-javascript"
-Bundle 'kchmck/vim-coffee-script'
-Bundle "tpope/vim-haml"
-Bundle 'groenewege/vim-less'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'tpope/vim-liquid'
-Bundle 'vim-scripts/fcitx.vim'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+Plugin 'wincent/Command-T'
+Plugin 'mru.vim'
+Plugin 'greplace.vim'
+Plugin 'fcitx.vim'
+
+Plugin 'vim-ruby/vim-ruby'
+" Plugin 'tpope/vim-rbenv'
+" Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-rails'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-haml'
+Plugin 'groenewege/vim-less'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'tpope/vim-liquid'
+Plugin 'yaml.vim'
+Plugin 'mattn/emmet-vim'
 
 "语法高亮
 syntax enable
@@ -101,11 +115,14 @@ au! BufRead,BufNewFile *.hamljs setfiletype haml
 au! BufRead,BufNewFile *.god setfiletype ruby
 
 " 快捷键
-nmap <Up> <c-w>k
-nmap <Down> <c-w>j
-nmap <Right> <c-w>l
-nmap <Left> <c-w>h
-nmap % v%
+" nmap <Up> <c-w>k
+" nmap <Down> <c-w>j
+" nmap <Right> <c-w>l
+" nmap <Left> <c-w>h
+" nmap % v%
+
+map <C-T> :FufFile<CR>
+map <C-E> :MRU<CR>
 
 "let g:rubycomplete_buffer_loading = 1
 "let g:rubycomplete_classes_in_global = 1
@@ -126,7 +143,7 @@ let Tlist_GainFocus_On_ToggleOpen = 1  "打开taglist时，光标保留在taglis
 "Settings for Solarized
 "let g:solarized_termcolors=256
 
-nnoremap <silent> <F2> :NERDTree<CR>
+nnoremap <silent> <F2> :NERDTreeToggle<CR>
 nnoremap <silent> <F3> :TlistToggle<CR>
 map <F4> :!ctags -R --exclude=.git --exclude=logs --exclude=doc .<CR>
 
@@ -148,7 +165,7 @@ map <F4> :!ctags -R --exclude=.git --exclude=logs --exclude=doc .<CR>
 
 "CtrlP 忽略的文件
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/]vendor/bundle$',
+  \ 'dir': '\v.gem$',
   \ 'file': '\vtags'
   \ }
 
