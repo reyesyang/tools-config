@@ -119,38 +119,29 @@ fi
 # git branch show configuration
 PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
 
-#export http_proxy="127.0.0.1:8087"
-alias gvim='gvim -f'
+# alias gvim='gvim -f'
 alias rpry='rails-console-pry -r pry-doc -r awesome_print'
-#PATH=$PATH:/home/reyesyang/development/android-sdk-linux/platform-tools
-#PATH=$PATH:/usr/local/go/bin
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-# add_path "/usr/local/heroku/bin"
 
-# Config for rvm
-# export rvmsudo_secure_path=1
-
-# Config for JDK font
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd"
+### Configuration for JDK
+# export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true -Dsun.java2d.xrender=true"
 
 alias canigo='tail -n 200 /var/log/auth.log | grep session | grep 09:'
 alias bi='bundle install --path vendor/bundle --binstubs=vendor/bundle/binstubs'
-# alias bi='bundle install --verbose --path vendor/bundle'
-# alias bi='bundle install --path vendor/bundle --binstubs'
 alias ihosts='sudo vi /etc/hosts'
 alias iblog='cd /home/reyesyang/program/projects/my/reyesyang.github.io && jekyll server --watch --draft'
 alias sinatra-console='pry -e "require \"./app\""'
-alias nogfw='ssh -v -D 127.0.0.1:1080 digital-ocean-1'
+#alias nogfw='ssh -v -D 127.0.0.1:1080 sg1.reyesyang.info'
+alias nogfw='sudo sslocal -c bin/ss_config.json -d start'
+alias net-log="tail -f /var/log/syslog"
 
-export ANDROID_PLATFORM_TOOLS_PATH="/home/reyesyang/program/tools/android-studio/sdk/platform-tools"
-# add_path $ANDROID_PLATFORM_TOOLS_PATH
-export ANDROID_TOOLS_PATH="/home/reyesyang/program/tools/android-studio/sdk/tools"
+export ANDROID_PLATFORM_TOOLS_PATH="/home/reyesyang/Android/Sdk/platform-tools"
+export ANDROID_TOOLS_PATH="/home/reyesyang/Android/Sdk/tools"
 export PATH="$ANDROID_PLATFORM_TOOLS_PATH:$ANDROID_TOOLS_PATH:$PATH"
-# add_path $ANDROID_TOOLS_PATH
 
-export TERM=xterm-256color  # for common 256 color terminals
+# export TERM=xterm-256color  # for common 256 color terminals
 
 export GOPATH="$HOME/program/projects/go"
 
@@ -161,3 +152,9 @@ eval "$(rbenv init -)"
 export EDITOR=vim
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
+
+# solarized dircolors
+# eval `dircolors ~/.dircolors`
+
+export STUDIO_JDK="/usr/lib/jvm/java-7-openjdk-amd64"
+export IDEA_JDK="/usr/lib/jvm/java-7-openjdk-amd64"

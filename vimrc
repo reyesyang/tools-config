@@ -1,63 +1,61 @@
+set noesckeys
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
 Plugin 'altercation/vim-colors-solarized'
 
-" Plugin 'msanders/snipmate.vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-" Plugin 'garbas/vim-snipmate'
-" Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Yggdroot/indentLine'
-Plugin 'taglist.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
 
-Plugin 'L9'
-Plugin 'FuzzyFinder'
-Plugin 'wincent/Command-T'
 Plugin 'mru.vim'
-Plugin 'greplace.vim'
 Plugin 'fcitx.vim'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
-Plugin 'vim-ruby/vim-ruby'
-" Plugin 'tpope/vim-rbenv'
-" Plugin 'tpope/vim-bundler'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-rails'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-haml'
-Plugin 'groenewege/vim-less'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'tpope/vim-liquid'
 Plugin 'yaml.vim'
-Plugin 'mattn/emmet-vim'
+" Plugin 'scrooloose/syntastic'
 
-"语法高亮
-syntax enable
+call vundle#end()
 
 "根据文件格式载入插件和缩进
 filetype plugin indent on 
 
+"语法高亮
+syntax enable
+
+" Syntax coloring lines that are too long just slows down the world
+set synmaxcol=1200
+
 set background=dark
+" set background=light
 colorscheme solarized
 
+" Improve vim's scrolling speed
+set ttyfast
+set ttyscroll=3
+set lazyredraw
+
 " 字体
-"set guifont=ubuntu\ mono\ 12
-set guifont=monaco\ 10
+" set guifont=ubuntu\ mono\ 12
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+" set guifont=monaco\ 10
+" set guifont=Monaco\ for\ Powerline\ 10
 set guifontwide=12
 
 "光标行高亮
@@ -66,7 +64,7 @@ set cursorline
 set cursorcolumn
 set colorcolumn=80
 
-"按缩进折叠，现在使用 ctags 和 taglist 插件，不需要在折叠代码以方便阅读了
+"按缩进折叠，现在使用 ctags 和 taglist 插件，不需要再折叠代码以方便阅读了
 " set foldmethod=indent
 " set foldlevel=1
 
@@ -84,13 +82,14 @@ set number
 
 "马上跳到搜索匹配
 set incsearch
-"set hlsearch
+" set hlsearch
 "set nowrapscan
 
 set autoindent
+set smartindent
 
 "打开鼠标功能
-set mouse=a 
+set mouse=a
 
 "指标符宽度
 set tabstop=2
@@ -101,27 +100,13 @@ set smarttab
 set showmatch
 set matchtime=3
 
-" 显示行尾
-" set list
-
 "自动补全时不扫描 tags 文件，否则可能由于 tags 文件过大导致 vim 无响应
 set complete-=t
 
-autocmd FileType make     set noexpandtab
-autocmd FileType python   set noexpandtab  tabstop=4  shiftwidth=4
-autocmd FileType c        set tabstop=4  shiftwidth=4
-au! BufRead,BufNewFile *.json setfiletype json
-au! BufRead,BufNewFile *.hamljs setfiletype haml
-au! BufRead,BufNewFile *.god setfiletype ruby
+autocmd BufRead,BufNewFile *.god setfiletype ruby
+autocmd FileType c set tabstop=4 shiftwidth=4
+autocmd FileType make set noexpandtab
 
-" 快捷键
-" nmap <Up> <c-w>k
-" nmap <Down> <c-w>j
-" nmap <Right> <c-w>l
-" nmap <Left> <c-w>h
-" nmap % v%
-
-map <C-T> :FufFile<CR>
 map <C-E> :MRU<CR>
 
 "let g:rubycomplete_buffer_loading = 1
@@ -143,9 +128,8 @@ let Tlist_GainFocus_On_ToggleOpen = 1  "打开taglist时，光标保留在taglis
 "Settings for Solarized
 "let g:solarized_termcolors=256
 
-nnoremap <silent> <F2> :NERDTreeToggle<CR>
-nnoremap <silent> <F3> :TlistToggle<CR>
-map <F4> :!ctags -R --exclude=.git --exclude=logs --exclude=doc .<CR>
+nmap <silent> <F2> :NERDTreeToggle<CR>
+nmap <F3> :!ctags -R --exclude=.git --exclude=logs --exclude=doc .<CR>
 
 "when a ruby file is loaded add all ruby and ruby gems tags to the list of tags that are available/relevant
 "au BufRead,BufNewFile *.rb setlocal tags+=~/.vim/tags/ruby_and_gems
@@ -165,9 +149,24 @@ map <F4> :!ctags -R --exclude=.git --exclude=logs --exclude=doc .<CR>
 
 "CtrlP 忽略的文件
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v.gem$',
+  \ 'dir': '\vtmp$',
   \ 'file': '\vtags'
   \ }
 
-" Disable folding for vim-markdown
-let g:vim_markdown_folding_disabled=1
+" 设置 UltiSnips，避免和 YCM 冲突
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" 设置 YCM
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+" 设置 Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
