@@ -119,42 +119,4 @@ fi
 # git branch show configuration
 PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
 
-# alias gvim='gvim -f'
-alias rpry='rails-console-pry -r pry-doc -r awesome_print'
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-### Configuration for JDK
-# export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true -Dsun.java2d.xrender=true"
-
-alias canigo='tail -n 200 /var/log/auth.log | grep session | grep 09:'
-alias bi='bundle install --path vendor/bundle --binstubs=vendor/bundle/binstubs'
-alias ihosts='sudo vi /etc/hosts'
-alias iblog='cd /home/reyesyang/program/projects/my/reyesyang.github.io && jekyll server --watch --draft'
-alias sinatra-console='pry -e "require \"./app\""'
-#alias nogfw='ssh -v -D 127.0.0.1:1080 sg1.reyesyang.info'
-alias nogfw='sudo sslocal -c bin/ss_config.json -d start'
-alias net-log="tail -f /var/log/syslog"
-
-export ANDROID_PLATFORM_TOOLS_PATH="/home/reyesyang/Android/Sdk/platform-tools"
-export ANDROID_TOOLS_PATH="/home/reyesyang/Android/Sdk/tools"
-export PATH="$ANDROID_PLATFORM_TOOLS_PATH:$ANDROID_TOOLS_PATH:$PATH"
-
-# export TERM=xterm-256color  # for common 256 color terminals
-
-export GOPATH="$HOME/program/projects/go"
-
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-export EDITOR=vim
-export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-
-# solarized dircolors
-# eval `dircolors ~/.dircolors`
-
-export STUDIO_JDK="/usr/lib/jvm/java-7-openjdk-amd64"
-export IDEA_JDK="/usr/lib/jvm/java-7-openjdk-amd64"
+source ~/.ishrc

@@ -2,7 +2,7 @@ set noesckeys
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
@@ -22,8 +22,9 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'mattn/emmet-vim'
 
 Plugin 'mru.vim'
-Plugin 'fcitx.vim'
+"Plugin 'fcitx.vim'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'bling/vim-airline'
 
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-rake'
@@ -53,9 +54,9 @@ set lazyredraw
 
 " 字体
 " set guifont=ubuntu\ mono\ 12
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+" set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 " set guifont=monaco\ 10
-" set guifont=Monaco\ for\ Powerline\ 10
+set guifont=Monaco\ for\ Powerline\ 10
 set guifontwide=12
 
 "光标行高亮

@@ -79,30 +79,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export EDITOR=vim
-export TERM=xterm-256color  # for common 256 color terminals
-
-export ANDROID_PLATFORM_TOOLS_PATH="/home/reyesyang/Android/Sdk/platform-tools"
-export ANDROID_TOOLS_PATH="/home/reyesyang/Android/Sdk/tools"
-export PATH="$ANDROID_PLATFORM_TOOLS_PATH:$ANDROID_TOOLS_PATH:$PATH"
-
-# Loads NVM
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
-
-# Load rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Load virtualenvwrapper
-export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-
-# solarized dircolors
-eval `dircolors ~/.dircolors`
-
-export STUDIO_JDK="/usr/lib/jvm/java-7-openjdk-amd64"
-export IDEA_JDK="/usr/lib/jvm/java-7-openjdk-amd64"
-
-export GOPATH="$HOME/program/projects/go"
-
-source ~/.aliases.sh
+source ~/.ishrc
