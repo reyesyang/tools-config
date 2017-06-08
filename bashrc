@@ -128,14 +128,14 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ### Configuration for JDK
 # export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true -Dsun.java2d.xrender=true"
 
-alias canigo='tail -n 200 /var/log/auth.log | grep session | grep 09:'
-alias bi='bundle install --path vendor/bundle --binstubs=vendor/bundle/binstubs'
-alias ihosts='sudo vi /etc/hosts'
-alias iblog='cd /home/reyesyang/program/projects/my/reyesyang.github.io && jekyll server --watch --draft'
-alias sinatra-console='pry -e "require \"./app\""'
+# alias canigo='tail -n 200 /var/log/auth.log | grep session | grep 09:'
+# alias bi='bundle install --path vendor/bundle --binstubs=vendor/bundle/binstubs'
+# alias ihosts='sudo vi /etc/hosts'
+# alias iblog='cd /home/reyesyang/program/projects/my/reyesyang.github.io && jekyll server --watch --draft'
+# alias sinatra-console='pry -e "require \"./app\""'
 #alias nogfw='ssh -v -D 127.0.0.1:1080 sg1.reyesyang.info'
-alias nogfw='sudo sslocal -c bin/ss_config.json -d start'
-alias net-log="tail -f /var/log/syslog"
+# alias nogfw='sudo sslocal -c bin/ss_config.json -d start'
+# alias net-log="tail -f /var/log/syslog"
 
 export ANDROID_PLATFORM_TOOLS_PATH="/home/reyesyang/Android/Sdk/platform-tools"
 export ANDROID_TOOLS_PATH="/home/reyesyang/Android/Sdk/tools"
@@ -156,5 +156,9 @@ source /usr/local/bin/virtualenvwrapper.sh
 # solarized dircolors
 # eval `dircolors ~/.dircolors`
 
-export STUDIO_JDK="/usr/lib/jvm/java-7-openjdk-amd64"
-export IDEA_JDK="/usr/lib/jvm/java-7-openjdk-amd64"
+# export STUDIO_JDK="/usr/lib/jvm/java-7-openjdk-amd64"
+# export IDEA_JDK="/usr/lib/jvm/java-7-openjdk-amd64"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/reyesyang/.sdkman"
+[[ -s "/home/reyesyang/.sdkman/bin/sdkman-init.sh" ]] && source "/home/reyesyang/.sdkman/bin/sdkman-init.sh"
